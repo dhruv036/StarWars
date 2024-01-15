@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import io.dhruv.starwars.R
 import io.dhruv.starwars.StarWarsApplication
-import io.dhruv.starwars.modal.Filter
+import io.dhruv.starwars.adapter.SortAdapter
+import io.dhruv.starwars.databinding.FilterDialogBinding
 import io.dhruv.starwars.viewModel.HomeFragmentViewModel
 
 class BottomSheetFragment(private val homeViewModel: HomeFragmentViewModel) : BottomSheetDialogFragment() {
 
-    lateinit var listView: RecyclerView
+
+    lateinit var binding: FilterDialogBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         (activity?.application as StarWarsApplication).applicationComponent.inject(this)
 
@@ -28,14 +27,20 @@ class BottomSheetFragment(private val homeViewModel: HomeFragmentViewModel) : Bo
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.filter_dialog,container,false)
+        binding = FilterDialogBinding.inflate(layoutInflater, container, false)
 
-        listView = view.findViewById(R.id.sort_filter_recyclerView)
+        binding.sortFilterRecyclerView.apply {
+            this.layoutManager =  LinearLayoutManager(activity)
+        }
 
-        listView.layoutManager = LinearLayoutManager(activity)
+        fetchFilmDetails()
 
+        return binding.root
+    }
+
+    fun fetchFilmDetails(){
         homeViewModel.updatedFilter.observe(viewLifecycleOwner, Observer {list->
-            listView.adapter = SortAdapter(list, SortAdapter.SortClickedListener {
+            binding.sortFilterRecyclerView.adapter = SortAdapter(list, SortAdapter.SortClickedListener {
                 list.forEach {
                     if (it.isSelected) {
                         it.isSelected =false
@@ -46,8 +51,6 @@ class BottomSheetFragment(private val homeViewModel: HomeFragmentViewModel) : Bo
                 dismiss()
             })
         })
-
-        return view
     }
 
 }

@@ -1,4 +1,4 @@
-package io.dhruv.starwars.ui
+package io.dhruv.starwars.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +21,7 @@ class SortAdapter(val list: List<Filter>, private val clickedListener: SortClick
         }
 
         companion object{
-            fun from(parent: ViewGroup): SortViewHolder{
+            fun from(parent: ViewGroup): SortViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = FilterDialogItemBinding.inflate(layoutInflater, parent, false)
                 return SortViewHolder(binding)

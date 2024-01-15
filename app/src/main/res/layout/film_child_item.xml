@@ -17,11 +17,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#E2D2FE"
         app:cardCornerRadius="10dp"
         android:layout_margin="4dp"
         android:layout_marginHorizontal="8dp"
-
         app:cardElevation="5dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -31,7 +29,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:background="@color/white"
             >
             <TextView
                 android:id="@+id/filmTitle"
@@ -43,6 +41,7 @@
                 android:paddingLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:textAlignment="textStart"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
@@ -56,6 +55,7 @@
                 app:layout_constraintHorizontal_bias="0.4"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/filmTitle" />
 
@@ -66,6 +66,7 @@
                 android:text="Producer"
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="16dp"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.6"
                 app:layout_constraintStart_toEndOf="@+id/directorLabel"
@@ -79,6 +80,8 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="8dp"
+                android:textSize="10sp"
+                android:textColor="@color/black"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintTop_toBottomOf="@id/producerName" />
 
@@ -89,6 +92,7 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:text=""
                 android:layout_marginTop="4dp"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="@id/directorLabel"
                 app:layout_constraintRight_toRightOf="@id/directorLabel"
                 app:layout_constraintTop_toBottomOf="@id/directorLabel" />
@@ -100,6 +104,7 @@
                 android:fontFamily="@font/montserrat_semibold"
                 android:text=""
                 android:layout_marginTop="4dp"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="@id/producerLabel"
                 app:layout_constraintRight_toRightOf="@id/producerLabel"
                 app:layout_constraintTop_toBottomOf="@id/producerLabel" />
@@ -110,8 +115,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_semibold"
                 android:text=""
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
+                android:textSize="10sp"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toLeftOf="@id/releaseLabel"
                 app:layout_constraintRight_toRightOf="@id/releaseLabel"
                 app:layout_constraintTop_toBottomOf="@id/releaseLabel"

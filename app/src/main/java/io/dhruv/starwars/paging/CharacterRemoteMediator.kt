@@ -1,6 +1,5 @@
 package io.dhruv.starwars.paging
 
-import android.util.Log
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
@@ -10,7 +9,7 @@ import io.dhruv.starwars.constant.CharacterToEntityConverter.convertCharacterLis
 import io.dhruv.starwars.db.CharacterDB
 import io.dhruv.starwars.db.entity.CharacterEntity
 import io.dhruv.starwars.db.entity.CharacterRemoteKeyEntity
-import io.dhruv.starwars.modal.ApiService
+import io.dhruv.starwars.network.ApiService
 
 @OptIn(ExperimentalPagingApi::class)
 class CharacterRemoteMediator(

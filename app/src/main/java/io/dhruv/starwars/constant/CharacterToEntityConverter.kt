@@ -14,8 +14,6 @@ object CharacterToEntityConverter {
         return characters.map { convertModalToEntity(it) }
     }
      fun convertModalToEntity(character: Character): CharacterEntity {
-         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ", Locale.getDefault())
-
          return CharacterEntity(
             id = 0,
             name = character.name,
@@ -28,7 +26,4 @@ object CharacterToEntityConverter {
         )
     }
 
-     fun generateRandomIds() : Int{
-        return Random.nextInt(0, 1000000)
-    }
 }

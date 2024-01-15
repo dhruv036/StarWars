@@ -1,12 +1,10 @@
-package io.dhruv.starwars.paging
+package io.dhruv.starwars.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.paging.PagingDataAdapter
-import androidx.paging.log
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.dhruv.starwars.R
@@ -30,7 +28,6 @@ class FilmDetailAdapter() : RecyclerView.Adapter<FilmDetailAdapter.FilmDetailVie
     override fun onBindViewHolder(holder: FilmDetailViewHolder, position: Int) {
         val item = list.get(position)
         item?.let {
-            Log.e("TAG", "Name: ${item.title} ", )
             it.title?.let {
                 holder.filmName.text = it
 
@@ -65,21 +62,6 @@ class FilmDetailAdapter() : RecyclerView.Adapter<FilmDetailAdapter.FilmDetailVie
     }
 
     override fun getItemCount(): Int {
-        Log.e("TAG", "getItemCount: ${list.size} ", )
         return list.size
     }
-
-    companion object {
-        private val FILMCOMPARATOR = object : DiffUtil.ItemCallback<Film>() {
-            override fun areItemsTheSame(oldItem: Film, newItem: Film): Boolean {
-                return oldItem.title == newItem.title
-            }
-
-            override fun areContentsTheSame(oldItem: Film, newItem: Film): Boolean {
-                return oldItem == newItem
-            }
-        }
-    }
-
-
 }

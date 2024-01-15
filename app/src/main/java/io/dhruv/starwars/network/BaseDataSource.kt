@@ -1,5 +1,6 @@
-package io.dhruv.starwars.modal
+package io.dhruv.starwars.network
 
+import io.dhruv.starwars.modal.Result
 import retrofit2.Response
 
 

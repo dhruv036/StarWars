@@ -9,7 +9,7 @@ import androidx.paging.cachedIn
 import androidx.paging.map
 import io.dhruv.starwars.constant.ListConverter
 import io.dhruv.starwars.db.entity.CharacterEntity
-import io.dhruv.starwars.modal.CharacterRepo
+import io.dhruv.starwars.network.CharacterRepo
 import io.dhruv.starwars.modal.Filter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
@@ -50,11 +50,7 @@ class HomeFragmentViewModel @Inject constructor(val repo: CharacterRepo) : ViewM
     }
 
     fun getSortedCharacter(): Flow<PagingData<CharacterEntity>>{
-        Log.e("TAG", "value: ${field.value!!} ", )
      return repo.getSortedCharacter(field.value!!).map { paging ->
-                Log.e("TAG", "getSortedCharacter: ${paging.map {
-                    it.name
-                }} ", )
                 paging
             }.cachedIn(viewModelScope)
         }

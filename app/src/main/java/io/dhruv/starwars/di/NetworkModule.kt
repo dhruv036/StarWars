@@ -3,7 +3,7 @@ package io.dhruv.starwars.di
 
 import dagger.Module
 import dagger.Provides
-import io.dhruv.starwars.modal.ApiService
+import io.dhruv.starwars.network.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton

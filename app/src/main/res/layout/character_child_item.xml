@@ -47,25 +47,27 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/heightlabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Height"
-                app:layout_constraintEnd_toStartOf="@+id/genderLabel"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/characterName" />
+                <TextView
+                    android:id="@+id/heightlabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Height"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/genderLabel"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/characterName" />
 
-            <TextView
-                android:id="@+id/genderLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Gender"
-                app:layout_constraintEnd_toStartOf="@+id/weightLabel"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/heightlabel"
-                app:layout_constraintTop_toBottomOf="@id/characterName" />
+                <TextView
+                    android:id="@+id/genderLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toStartOf="@+id/weightLabel"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/heightlabel"
+                    app:layout_constraintTop_toBottomOf="@id/characterName" />
 
             <TextView
                 android:id="@+id/weightLabel"

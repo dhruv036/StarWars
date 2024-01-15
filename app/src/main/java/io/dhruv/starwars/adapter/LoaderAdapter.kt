@@ -1,4 +1,4 @@
-package io.dhruv.starwars.paging
+package io.dhruv.starwars.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,9 +19,7 @@ class LoaderAdapter: LoadStateAdapter<LoaderAdapter.LoaderViewHolder>()  {
         private val errorTextView = itemView.findViewById<TextView>(R.id.error_textView)
 
         fun bind(loadState: LoadState) {
-            Log.i("TAG", "bind: $loadState")
             progressBar.isVisible = loadState is LoadState.Loading
-//            errorTextView.isVisible = loadState is LoadState.Error
         }
     }
     override fun onBindViewHolder(holder: LoaderViewHolder, loadState: LoadState) {

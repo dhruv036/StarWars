@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/parentLayout"
+    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
@@ -17,6 +18,7 @@
         android:fontFamily="@font/montserrat_extrabold"
         android:layout_marginTop="16dp"
         android:textSize="24dp"
+        android:textColor="@color/black"
         />
     <ImageView
         android:id="@+id/backBt"

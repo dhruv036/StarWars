@@ -1,16 +1,10 @@
 package io.dhruv.starwars.viewModel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import io.dhruv.starwars.modal.CharacterRepo
+import io.dhruv.starwars.network.CharacterRepo
 import io.dhruv.starwars.modal.Film
-import io.dhruv.starwars.modal.Result
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

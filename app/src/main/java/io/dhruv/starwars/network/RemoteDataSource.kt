@@ -1,4 +1,4 @@
-package io.dhruv.starwars.modal
+package io.dhruv.starwars.network
 
 import javax.inject.Inject
 

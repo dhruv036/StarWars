@@ -1,4 +1,4 @@
-package io.dhruv.starwars.modal
+package io.dhruv.starwars.network
 
 import android.util.Log
 import androidx.paging.ExperimentalPagingApi
@@ -7,11 +7,13 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import io.dhruv.starwars.db.CharacterDB
 import io.dhruv.starwars.db.entity.CharacterEntity
+import io.dhruv.starwars.modal.Film
+import io.dhruv.starwars.modal.Result
 import io.dhruv.starwars.paging.CharacterRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class CharacterRepo @Inject constructor(private val apiService: ApiService,private val characterDB: CharacterDB, private val remoteDataSource: RemoteDataSource) : BaseDataSource() {
+class CharacterRepo @Inject constructor(private val apiService: ApiService, private val characterDB: CharacterDB, private val remoteDataSource: RemoteDataSource) : BaseDataSource() {
 
     @OptIn(ExperimentalPagingApi::class)
     fun getCharadcter() = Pager(
@@ -30,7 +32,6 @@ class CharacterRepo @Inject constructor(private val apiService: ApiService,priva
         remoteDataSource.getfilmsDetails(movieId)
 
     fun getSortedCharacter(type: Int): Flow<PagingData<CharacterEntity>> {
-        Log.e("00", "name: $type", )
         return Pager(
             config = PagingConfig(pageSize = 20, maxSize = 100),
             pagingSourceFactory = { when(type){

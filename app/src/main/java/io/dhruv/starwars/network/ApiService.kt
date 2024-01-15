@@ -1,5 +1,7 @@
-package io.dhruv.starwars.modal
+package io.dhruv.starwars.network
 
+import io.dhruv.starwars.modal.AllCharacter
+import io.dhruv.starwars.modal.Film
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

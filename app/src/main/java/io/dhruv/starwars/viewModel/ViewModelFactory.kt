@@ -2,7 +2,6 @@ package io.dhruv.starwars.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import io.dhruv.starwars.modal.CharacterRepo
 import javax.inject.Inject
 
 class ViewModelFactory @Inject constructor(

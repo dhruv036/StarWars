@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 import io.dhruv.starwars.constant.CharacterToEntityConverter.convertCharacterListToEntityList
 import io.dhruv.starwars.db.CharacterDB
 import io.dhruv.starwars.db.entity.CharacterEntity
-import io.dhruv.starwars.modal.ApiService
+import io.dhruv.starwars.network.ApiService
 import java.lang.Exception
 import javax.inject.Inject
 

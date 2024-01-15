@@ -6,9 +6,7 @@ import java.util.Date
 import java.util.TimeZone
 
 object DateConverter {
-//    fun fromTimestamp(value: Long?): Date? {
-//        return value?.let { Date(it) }
-//    }
+
 
     @TypeConverter
     fun dateToTimestamp(time: String?): Long? {
