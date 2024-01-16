@@ -8,16 +8,39 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.dhruv.starwars.R
+import io.dhruv.starwars.databinding.CharacterChildItemBinding
+import io.dhruv.starwars.databinding.FilmChildItemBinding
 import io.dhruv.starwars.modal.Film
 
-class FilmDetailAdapter() : RecyclerView.Adapter<FilmDetailAdapter.FilmDetailViewHolder>() {
+class FilmDetailAdapter : RecyclerView.Adapter<FilmDetailAdapter.FilmDetailViewHolder>() {
     var list = mutableListOf<Film>()
 
-    class FilmDetailViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView.rootView){
-        val filmName = itemView.findViewById<TextView>(R.id.filmTitle)
-        val directorName = itemView.findViewById<TextView>(R.id.directorName)
-        val producerName = itemView.findViewById<TextView>(R.id.producerName)
-        val releaseDate = itemView.findViewById<TextView>(R.id.releaseDate)
+    class FilmDetailViewHolder(private val binding: FilmChildItemBinding) : RecyclerView.ViewHolder(binding.root){
+
+        fun bind(film: Film){
+            binding.film = refactorData(film)
+        }
+        companion object {
+            fun from(parent: ViewGroup): FilmDetailViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding =FilmChildItemBinding.inflate(layoutInflater,parent,false)
+                return FilmDetailViewHolder(binding)
+            }
+        }
+        fun refactorData(film : Film): Film? {
+            return Film(
+                title = film.title,
+                director = film.director,
+                producer =   film.producer.split(",").let {
+                     if (it.size >= 2){
+                        it.joinToString("\n")
+                    }else {
+                        film.producer
+                    }
+                },
+                release_date = film.release_date
+            )
+        }
     }
 
     fun addItem(film: Film){
@@ -28,40 +51,16 @@ class FilmDetailAdapter() : RecyclerView.Adapter<FilmDetailAdapter.FilmDetailVie
     override fun onBindViewHolder(holder: FilmDetailViewHolder, position: Int) {
         val item = list.get(position)
         item?.let {
-            it.title?.let {
-                holder.filmName.text = it
-
-            }
-            it.producer?.let {
-                holder.producerName.text = it
-
-            }
-            item.producer.split(",").let {
-                val result = if (it.size >= 2){
-                    it.joinToString("\n")
-                }else {
-                    item.producer
-                }
-                holder.producerName.text = result
-            }
-            it.release_date?.let {
-                holder.releaseDate.text = it
-
-            }
-            it.director?.let {
-                holder.directorName.text = it
-
-            }
-
+            holder.bind(it)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmDetailViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.film_child_item,parent,false)
-        return FilmDetailViewHolder(view)
+        return FilmDetailViewHolder.from(parent)
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
+
 }

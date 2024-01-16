@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import io.dhruv.starwars.StarWarsApplication
 import io.dhruv.starwars.databinding.HomeFragmentBinding
 import io.dhruv.starwars.db.CharacterDB
+import io.dhruv.starwars.adapter.CharacterAdapter
 import io.dhruv.starwars.adapter.LoaderAdapter
-import io.dhruv.starwars.paging.CharacterAdapter
 import io.dhruv.starwars.viewModel.HomeFragmentViewModel
 import io.dhruv.starwars.viewModel.ViewModelFactory
 import kotlinx.coroutines.CoroutineScope
@@ -85,9 +85,11 @@ class HomeFragment : Fragment() {
         }
     }
 
-
     fun initialization(){
-        characterAdapter = CharacterAdapter(requireActivity())
+        characterAdapter = CharacterAdapter(requireActivity(), CharacterAdapter.CharacterClickedListener {
+            val action = HomeFragmentDirections.actionCharacterHomeFragmentToDetailsFragment(it)
+            findNavController().navigate(action)
+        })
         characterAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         binding.recycleview.apply {
             this.layoutManager = GridLayoutManager(activity,2)
@@ -96,11 +98,6 @@ class HomeFragment : Fragment() {
                 header = LoaderAdapter(),
                 footer = LoaderAdapter()
             )
-        }
-        characterAdapter.onItemSelected {
-            Log.e("item", "onItemClick: ${it.name}", )
-            val action = HomeFragmentDirections.actionCharacterHomeFragmentToDetailsFragment(it)
-            findNavController().navigate(action)
         }
     }
 
@@ -117,7 +114,6 @@ class HomeFragment : Fragment() {
         binding.filter.setOnClickListener {
             BottomSheetFragment(viewModel).show(childFragmentManager,"")
         }
-
 
         binding.searchBox.setOnQueryTextListener( object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(newText: String?): Boolean {

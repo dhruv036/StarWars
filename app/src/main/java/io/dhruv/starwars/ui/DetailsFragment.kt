@@ -1,5 +1,6 @@
 package io.dhruv.starwars.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -84,7 +85,7 @@ class DetailsFragment : Fragment() {
             this.adapter = filmAdapter
             this.hasFixedSize()
         }
-        binding.parentLayout.setBackgroundColor(requireContext().getColor(RandomColors.getRandomColor()))
+        binding.parentLayout.setBackgroundColor(Color.parseColor(RandomColors.getRandomColor()))
 
     }
 
@@ -101,7 +102,4 @@ class DetailsFragment : Fragment() {
         val matchResult = pattern.find(url)
         return matchResult?.groups?.get(1)?.value?.toIntOrNull()
     }
-
-
-
 }

@@ -1,16 +1,14 @@
 package io.dhruv.starwars.constant
 
-import io.dhruv.starwars.R
-import kotlin.random.Random
 
 object RandomColors {
     val colors = arrayOf(
-        R.color.blue,
-        R.color.yellow,
-        R.color.purple,
-        R.color.green,
-        R.color.orange
+        "#BAE5F4",
+        "#FFF3D3",
+        "#E2D2FE",
+        "#EDF8E7",
+        "#FCCDCD"
     )
 
-    fun getRandomColor() =  colors[Random.nextInt(colors.size)]
+    fun getRandomColor() =  colors.random()
 }
